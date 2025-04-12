@@ -15,7 +15,11 @@ declare_id!("Dt7bapXXtCZMtnEGGVJBFcne1AKjanjfVKHFCvFtAWQv");
 pub mod ticket {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        initialize::handler(ctx)
+    pub fn create_contest(ctx: Context<CreateContest>) -> Result<()> {
+        ctx.accounts.create_contest()
+    }
+
+    pub fn register_contest(ctx: Context<RegisterContest>) -> Result<()> {
+        ctx.accounts.register_contest()
     }
 }
