@@ -15,8 +15,20 @@ declare_id!("Dt7bapXXtCZMtnEGGVJBFcne1AKjanjfVKHFCvFtAWQv");
 pub mod ticket {
     use super::*;
 
-    pub fn create_contest(ctx: Context<CreateContest>) -> Result<()> {
-        ctx.accounts.create_contest()
+    pub fn create_contest(
+        ctx: Context<CreateContest>,
+        name: String,
+        description: String,
+        ticket_price: u64,
+        max_tickets: u8,
+    ) -> Result<()> {
+        ctx.accounts.create_contest(
+            name,
+            description,
+            ticket_price,
+            max_tickets,
+            ctx.bumps.contest,
+        )
     }
 
     pub fn register_contest(ctx: Context<RegisterContest>) -> Result<()> {
