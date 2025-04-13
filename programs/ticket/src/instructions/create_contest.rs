@@ -10,8 +10,9 @@ pub struct CreateContest<'info> {
 		seeds = [b"contest", signer.key().as_ref()],
 		bump)]
     pub contest: Account<'info, Contest>,
+    /// CHECK: This is the signer who pays for the contest creation and is stored as the contest owner
     #[account(mut)]
-    pub signer: AccountInfo<'info>,
+    pub signer: Signer<'info>,
     pub system_program: Program<'info, System>,
 }
 

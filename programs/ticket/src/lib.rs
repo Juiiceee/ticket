@@ -34,4 +34,8 @@ pub mod ticket {
     pub fn register_contest(ctx: Context<RegisterContest>) -> Result<()> {
         ctx.accounts.register_contest()
     }
+
+    pub fn close_contest(ctx: Context<CloseContest>) -> Result<()> {
+        ctx.accounts.close_contest()
+    }
 }

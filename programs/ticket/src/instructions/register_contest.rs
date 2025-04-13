@@ -5,10 +5,11 @@ use anchor_lang::system_program;
 
 #[derive(Accounts)]
 pub struct RegisterContest<'info> {
-    #[account(mut, seeds = [b"contest", signer.key().as_ref()], bump = contest.bump)]
-    pub contest: Account<'info, Contest>,
     #[account(mut)]
-    pub signer: AccountInfo<'info>,
+    pub contest: Account<'info, Contest>,
+    /// CHECK: This is the signer who pays for the contest creation and is stored as the contest owner
+    #[account(mut)]
+    pub signer: Signer<'info>,
     pub system_program: Program<'info, System>,
 }
 
